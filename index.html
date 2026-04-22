@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Violência Patrimonial - Conscientização e Direitos</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- Tema Escuro e Global --- */
+        :root {
+            --bg-dark: #09090b;
+            --accent-primary: #d946ef;
+            --accent-secondary: #8b5cf6;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* --- Background Atmosférico --- */
+        .bg-effects {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: var(--bg-dark);
+        }
+
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.25;
+            animation: moveOrb 20s infinite alternate;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--accent-secondary);
+            top: -10%;
+            left: -10%;
+        }
+
+        .orb-2 {
+            width: 800px;
+            height: 800px;
+            background: var(--accent-primary);
+            bottom: -20%;
+            right: -20%;
+            animation-delay: 5s;
+        }
+
+        @keyframes moveOrb {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        /* --- Layout das Seções --- */
+        section {
+            min-height: 100vh; /* Cada seção ocupa a tela toda */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, var(--accent-primary), var(--text-main));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            text-align: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: var(--accent-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+            color: white;
+            box-shadow: 0 0 25px rgba(217, 70, 239, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(217, 70, 239, 0.5);
+        }
+
+        /* --- Grid de Informações (O que é) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 768px) {
+            .info-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        .info-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: transform 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .info-card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .info-card h3 {
+            font-size: 1.4rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+        }
+
+        /* --- Lista de Exemplos (Estendida) --- */
+        .example-list {
+            list-style: none;
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            border-left: 3px solid var(--accent-primary);
+        }
+
+        .example-icon {
+            font-size: 1.5rem;
+            margin-top: 2px;
+        }
+
+        .example-content strong {
+            display: block;
+            color: var(--text-main);
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .example-content p {
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        /* --- Seção Passo a Passo --- */
+        .steps-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .step-item {
+            position: relative;
+            padding-bottom: 2rem;
+            padding-left: 2rem;
+        }
+
+        .step-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        .step-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 20px;
+            bottom: 0;
+            width: 2px;
+            background: var(--glass-border);
+        }
+
+        .step-item:last-child::after {
+            display: none;
+        }
+
+        .step-item h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        /* --- Seção de Contato --- */
+        .contact-section {
+            text-align: center;
+            background: radial-gradient(circle at center, rgba(217, 70, 239, 0.1), transparent 70%);
+            border-radius: 40px;
+            padding: 4rem 2rem;
+            border: 1px solid var(--glass-border);
+            margin: 2rem auto;
+        }
+
+        .big-number {
+            font-size: 6rem;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 0 40px rgba(217, 70, 239, 0.5);
+            margin: 1rem 0;
+            letter-spacing: -2px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-effects">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Violência <br><span>Patrimonial</span></h1>
+        <p class="hero-subtitle">O controle do dinheiro, documentos e bens é uma forma silenciosa de aprisionamento. Informe-se, reconheça os sinais e busque a liberdade.</p>
+        <a href="#conceito" class="btn btn-primary">Entenda Agora</a>
+    </section>
+
+    <!-- CONCEITO E LEI -->
+    <section id="conceito">
+        <h2>O que diz a Lei?</h2>
+        <p>Considerada uma das cinco formas de violência doméstica contra a mulher pela Lei Maria da Penha (Lei nº 11.340/2006), a violência patrimonial é frequentemente subestimada, mas tem impactos devastadores na autonomia da vítima.</p>
+        
+        <div style="background: rgba(255,255,255,0.03); padding: 2rem; border-radius: 15px; border-left: 4px solid var(--accent-secondary); margin-bottom: 2rem;">
+            <p style="font-style: italic; margin: 0; font-size: 1.2rem; color: var(--text-main);">
+                "Configura violência patrimonial qualquer conduta que configure retenção, subtração, destruição parcial ou total de seus objetos, instrumentos de trabalho, documentos pessoais, bens, valores e direitos ou recursos econômicos."
+            </p>
+            <p style="margin-top: 1rem; font-weight: bold; color: var(--accent-primary);">Art. 7º, Inciso V - Lei Maria da Penha</p>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <span class="info-card-icon">🔗</span>
+                <h3>A Prisão Invisível</h3>
+                <p>Ao retirar o acesso a recursos, o agressor impede que a mulher saia do relacionamento abusivo, criando uma dependência forçada.</p>
+            </div>
+            <div class="info-card">
+                <span class="info-card-icon">⚖️</span>
+                <h3>Crime Inafiançável</h3>
+                <p>Assim como a violência física, a patrimonial é crime, ação penal pública incondicionada, não dependendo de representação da vítima para ser investigada.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXEMPLOS E SINAIS (Expandido) -->
+    <section id="sinais">
+        <h2>Identificando a Violência</h2>
+        <p>A violência patrimonial pode se manifestar de formas sutis até extremamente agressivas. Confira os exemplos mais comuns:</p>
+        
+        <ul class="example-list">
+            <li class="example-item">
+                <span class="example-icon">💸</span>
+                <div class="example-content">
+                    <strong>Controle Financeiro Absoluto</strong>
+                    <p>O agressor controla rigidamente todos os gastos, exige comprovantes de cada centavo gasto ou obriga a mulher a entregar seu salário integralmente.</p>
+                </div>
+            </li>
+            <li class="example-item">
+                <span class="example-icon">🚫</span>
+                <div class="example-content">
+                    <strong>Sabotagem Profissional</strong>
+                    <p>Impedir que a mulher trabalhe ou estude, muitas vezes usando a desculpa de cuidados domésticos, ou criar situações para que ela perca o emprego (ligar insistentemente, causar atrasos).</p>
+                </div>
+            </li>
+            <li class="example-item">
+                <span class="example-icon">🆔</span>
+                <div class="example-content">
+                    <strong>Retenção de Documentos</strong>
+                    <p>Esconder, rasgar ou negar o acesso a RG, CPF, Carteira de Trabalho, Certidões de Nascimento ou passaportes, impedindo a circulação e busca de direitos.</p>
+                </div>
+            </li>
+            <li class="example-item">
+                <span class="example-icon">📉</span>
+                <div class="example-content">
+                    <strong>Dívidas Forçadas</strong>
+                    <p>Realizar empréstimos, financiar bens ou usar cartões de crédito em nome da mulher sem o seu consentimento, comprometendo seu nome e score de crédito.</p>
+                </div>
+            </li>
+            <li class="example-item">
+                <span class="example-icon">🏠</span>
+                <div class="example-content">
+                    <strong>Venda Indevida de Bens</strong>
+                    <p>Vender móveis, eletrodomésticos ou até o imóvel do casal sem a autorização da parceira, ou destruir pertences pessoais de valor afetivo ou material.</p>
+                </div>
+            </li>
+        </ul>
+    </section>
+
+    <!-- PASSO A PASSO (Novo) -->
+    <section id="passo-a-passo">
+        <h2>O que fazer agora?</h2>
+        <p>Se você se identifica com essas situações, saiba que existe um caminho legal para recuperar sua autonomia. O sistema de justiça oferece ferramentas imediatas.</p>
+        
+        <div class="steps-container">
+            <div class="step-item">
+                <h3>1. Busque Apoio Psicológico e Social</h3>
+                <p>Centros de Referência e CRAS podem oferecer suporte emocional e encaminhamentos sem necessidade de processo judicial imediato.</p>
+            </div>
+            <div class="step-item">
+                <h3>2. Registre o Boletim de Ocorrência (B.O.)</h3>
+                <p>Vá a uma Delegacia de Polícia (preferencialmente a Delegacia da Mulher). Você não precisa de advogado para registrar a ocorrência. Leve provas se tiver (prints, testemunhas).</p>
+            </div>
+            <div class="step-item">
+                <h3>3. Solicite Medidas Protetivas</h3>
+                <p>No B.O. ou na Defensoria Pública, peça medidas protetivas de urgência. Elas podem obrigar o agressor a devolver documentos, bens e pagar pensão provisória.</p>
+            </div>
+            <div class="step-item">
+                <h3>4. Busque a Defensoria Pública</h3>
+                <p>Se não tiver condições financeiras, a Defensoria Pública atende gratuitamente para garantir seus direitos na partilha de bens, guarda de filhos e pensão alimentícia.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AJUDA -->
+    <section id="ajuda">
+        <div class="contact-section">
+            <h2>Você Não Está Sozinha</h2>
+            <p>A denúncia é o primeiro passo para a liberdade. A ligação é gratuita e sigilosa.</p>
+            
+            <span class="big-number">180</span>
+            <p style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 1rem;">Central de Atendimento à Mulher</p>
+            <p style="font-size: 0.9rem;">Disponível 24 horas, todos os dias.</p>
+            <br>
+            <a href="tel:180" class="btn btn-primary">Ligar Agora</a>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">Em caso de emergência ou risco de vida imediato, ligue <strong>190</strong> (Polícia Militar).</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>Desenvolvido para fins de conscientização e apoio educacional.</p>
+    </footer>
+
+</body>
+</html>

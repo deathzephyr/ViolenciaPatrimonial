@@ -140,10 +140,6 @@
             transform: translateY(0);
         }
 
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
-
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
         h2 {
@@ -204,10 +200,50 @@
         .hero-subtitle { 
             font-size: 1.4rem; 
             max-width: 700px; 
-            margin-bottom: 3rem; 
+            margin-bottom: 1.5rem; 
             color: var(--text-muted); 
         }
 
+        /* Bloco do Autor */
+        .author-block {
+            margin-bottom: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .author-label {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--accent-tertiary);
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        .author-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--text-main);
+            font-weight: 700;
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+            position: relative;
+            padding: 0 1rem;
+        }
+        
+        .author-name::before, .author-name::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-tertiary));
+        }
+        .author-name::before { right: 100%; }
+        .author-name::after { left: 100%; background: linear-gradient(90deg, var(--accent-tertiary), transparent); }
+
+        /* Scroll Indicator */
         .scroll-indicator {
             position: absolute;
             bottom: 3rem;
@@ -661,6 +697,7 @@
             .timeline-item {
                 padding-left: 1.5rem;
             }
+            .author-name::before, .author-name::after { display: none; }
         }
 
         /* Prefers Reduced Motion */
@@ -690,6 +727,12 @@
         <div class="reveal">
             <h1>Violência <br><span>Patrimonial</span></h1>
             <p class="hero-subtitle">A tirania invisível do controle econômico. Uma jornada para entender, identificar e combater a opressão financeira.</p>
+            
+            <div class="author-block reveal">
+                <span class="author-label">Apresentado por</span>
+                <span class="author-name">Hevelin Rocha de Melo</span>
+            </div>
+
             <a href="#conceito" class="btn"><span>Explorar</span></a>
         </div>
         <div class="scroll-indicator">

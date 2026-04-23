@@ -21,11 +21,16 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { 
+            scroll-behavior: smooth; 
+            /* CORREÇÃO: Fundo aplicado no HTML para ficar atrás de tudo */
+            background: var(--bg-dark); 
+        }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: var(--bg-dark);
+            /* CORREÇÃO: Removido o background daqui para não tampar as auroras */
+            background: transparent;
             color: var(--text-main);
             line-height: 1.8;
             overflow-x: hidden;
@@ -53,9 +58,11 @@
         .bg-container {
             position: fixed;
             inset: 0;
-            z-index: -2;
+            /* CORREÇÃO: Z-index ajustado para ficar atrás do conteúdo mas visível */
+            z-index: -2; 
             overflow: hidden;
             background: radial-gradient(ellipse at bottom, #1a0b2e 0%, #050507 100%);
+            pointer-events: none; /* Garante que não bloqueie cliques */
         }
 
         /* Auroras Boreais Animadas */
@@ -149,6 +156,7 @@
             max-width: 1100px;
             margin: 0 auto;
             position: relative;
+            z-index: 1; /* Garante que o conteúdo fique acima do fundo */
         }
 
         .reveal {
@@ -954,6 +962,7 @@
     <!-- AGRADECIMENTO -->
     <section id="agradecimento">
         <div class="thanks-card reveal">
+            <div class="thanks-icon">🌟</div>
             <h2 class="thanks-title">Obrigado</h2>
             <div class="thanks-divider"></div>
             <p class="thanks-text">
